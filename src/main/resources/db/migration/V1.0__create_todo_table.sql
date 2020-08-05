@@ -1,5 +1,5 @@
 CREATE TABLE todo(
     id INTEGER AUTO_INCREMENT PRIMARY KEY,
-    content VARCHAR(255),
+    text VARCHAR(255),
     completed BOOLEAN
 )

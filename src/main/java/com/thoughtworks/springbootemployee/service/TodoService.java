@@ -14,7 +14,7 @@ public class TodoService {
     @Resource
     private TodoRepository todoRepository;
 
-    List<TodoResponse> getAllTodos() {
+    public List<TodoResponse> getAllTodos() {
         return todoRepository.findAll().stream()
                 .map(TodoMapper::toTodoResponse)
                 .collect(Collectors.toList());

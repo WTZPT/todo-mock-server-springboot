@@ -2,15 +2,15 @@ package com.thoughtworks.springbootemployee.dto;
 
 public class TodoResponse {
     private Integer id;
-    private String content;
+    private String text;
     private Boolean completed;
 
     public TodoResponse() {
     }
 
-    public TodoResponse(Integer id, String content, Boolean completed) {
+    public TodoResponse(Integer id, String text, Boolean completed) {
         this.id = id;
-        this.content = content;
+        this.text = text;
         this.completed = completed;
     }
 
@@ -22,12 +22,12 @@ public class TodoResponse {
         this.id = id;
     }
 
-    public String getContent() {
-        return content;
+    public String getText() {
+        return text;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setText(String text) {
+        this.text = text;
     }
 
     public Boolean getCompleted() {
