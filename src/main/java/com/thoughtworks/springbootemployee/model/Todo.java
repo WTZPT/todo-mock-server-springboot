@@ -17,6 +17,11 @@ public class Todo {
     public Todo() {
     }
 
+    public Todo(String text, Boolean completed) {
+        this.text = text;
+        this.completed = completed;
+    }
+
     public Integer getId() {
         return id;
     }

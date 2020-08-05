@@ -1,6 +1,7 @@
 package com.thoughtworks.springbootemployee.controller;
 
 import com.thoughtworks.springbootemployee.common.JsonResult;
+import com.thoughtworks.springbootemployee.dto.TodoRequest;
 import com.thoughtworks.springbootemployee.service.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +22,19 @@ public class TodoController {
 
     @PatchMapping("/{id}")
     public JsonResult changeCompleteOfTodo(@PathVariable int id) {
-        todoService.changeCompleteOfTodoById(id);
+        this.todoService.changeCompleteOfTodoById(id);
+        return success();
+    }
+
+    @PostMapping
+    public JsonResult createNewTodo(@RequestBody TodoRequest todoRequest) {
+
+        return success(this.todoService.createTodo(todoRequest));
+    }
+
+    @DeleteMapping("/{id}")
+    public JsonResult deleteTodoById(@PathVariable int id) {
+        this.todoService.deleteTodoById(id);
         return success();
     }
 }
