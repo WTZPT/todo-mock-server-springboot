@@ -1,7 +1,9 @@
 package com.thoughtworks.springbootemployee.dao;
 
+import com.thoughtworks.springbootemployee.model.Todo;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class TodoRepository {
+public interface TodoRepository extends JpaRepository<Todo,Integer> {
 }
