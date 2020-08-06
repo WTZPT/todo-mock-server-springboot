@@ -1,0 +1,19 @@
+server:
+  port: 8004
+spring:
+  datasource:
+    url: jdbc:h2:file:./h2/testdb
+    driverClassName: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+  h2:
+    console:
+      enabled: true
+      path: /h2
+  flyway:
+    location:
+      classpath: db/migration
+    outOfOrder: true

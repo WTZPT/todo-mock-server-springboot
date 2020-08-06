@@ -3,6 +3,7 @@ package com.thoughtworks.springbootemployee.service;
 import com.thoughtworks.springbootemployee.dao.TodoRepository;
 import com.thoughtworks.springbootemployee.dto.TodoRequest;
 import com.thoughtworks.springbootemployee.dto.TodoResponse;
+import com.thoughtworks.springbootemployee.exception.NoSuchDataException;
 import com.thoughtworks.springbootemployee.mapper.TodoMapper;
 import com.thoughtworks.springbootemployee.model.Todo;
 import org.springframework.stereotype.Service;
@@ -25,17 +26,20 @@ public class TodoService {
                 .collect(Collectors.toList());
     }
 
-    public TodoResponse changeCompleteOfTodoById(int id) {
-        Todo todo = this.todoRepository.findById(id).orElseThrow(NoClassDefFoundError::new);
+    public List<TodoResponse> changeCompleteOfTodoById(int id) {
+        Todo todo = this.todoRepository.findById(id).orElseThrow(NoSuchDataException::new);
         todo.setCompleted(!todo.getCompleted());
-        return toTodoResponse(this.todoRepository.save(todo));
+        this.todoRepository.save(todo);
+        return getAllTodos();
     }
 
-    public TodoResponse createTodo(TodoRequest todoRequest) {
-        return toTodoResponse(this.todoRepository.save(toTodo(todoRequest)));
+    public List<TodoResponse> createTodo(TodoRequest todoRequest) {
+        toTodoResponse(this.todoRepository.save(toTodo(todoRequest)));
+        return getAllTodos();
     }
 
-    public void deleteTodoById(int id) {
+    public List<TodoResponse> deleteTodoById(int id) {
         this.todoRepository.deleteById(id);
+        return getAllTodos();
     }
 }

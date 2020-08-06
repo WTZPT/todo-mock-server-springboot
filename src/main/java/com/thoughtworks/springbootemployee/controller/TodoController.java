@@ -34,7 +34,7 @@ public class TodoController {
 
     @DeleteMapping("/{id}")
     public JsonResult deleteTodoById(@PathVariable int id) {
-        this.todoService.deleteTodoById(id);
-        return success();
+
+        return success(this.todoService.deleteTodoById(id));
     }
 }
